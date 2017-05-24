@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="runners.TestsRunner" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="uk157171" time="0.0">
+  <properties/>
+  <system-out><![CDATA[@Tests
+Feature: Google Search Test
+
+  Scenario: User can search on google        ?[90m# Google_Search.feature:4?[0m
+    ?[33mGiven ?[0m?[33mI navigate to the google home page?[0m
+    ?[33mAnd ?[0m?[33mI search for "Foo"?[0m
+    ?[33mWhen ?[0m?[33mI click the search button?[0m
+    ?[33mThen ?[0m?[33mI see my search results?[0m
+
+1 Scenarios (?[33m1 undefined?[0m)
+4 Steps (?[33m4 undefined?[0m)
+0m0.000s
+
+
+You can implement missing steps with the snippets below:
+
+@Given("^I navigate to the google home page$")
+public void i_navigate_to_the_google_home_page() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+@Given("^I search for \"([^\"]*)\"$")
+public void i_search_for(String arg1) throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+@When("^I click the search button$")
+public void i_click_the_search_button() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+@Then("^I see my search results$")
+public void i_see_my_search_results() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
