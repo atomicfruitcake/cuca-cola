@@ -40,7 +40,7 @@
 							<forkCount>1</forkCount>
 							<reuseForks>false</reuseForks>
 							<includes>
-								<include>SATTestsRunner.class</include>
+								<include>TestsRunner.class</include>
 							</includes>
 						</configuration>
 					</execution>
