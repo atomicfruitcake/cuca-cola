@@ -1,4 +1,4 @@
-#!/usr/bin/env bashdock
+#!/usr/bin/env bash
 
 echo Please ensure Docker image is deleted from virtualbox GUI
 

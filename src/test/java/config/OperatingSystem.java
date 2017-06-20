@@ -12,11 +12,11 @@ public abstract class OperatingSystem {
     }
 
     public static boolean isWindows() {
-        return (getOperatingSystemName().indexOf("win") >= 0);
+        return (getOperatingSystemName().contains("win"));
     }
 
     public static boolean isMacOS() {
-        return (getOperatingSystemName().indexOf("mac") >= 0);
+        return (getOperatingSystemName().contains("mac"));
     }
 }
 

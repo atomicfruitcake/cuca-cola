@@ -22,7 +22,6 @@ import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -34,25 +33,23 @@ import enums.Environments;
 
 public class DriverFactory {
 
-    private Logger LOGGER = Logger.getLogger(DriverFactory.class.getName());
+    private final Logger LOGGER = Logger.getLogger(DriverFactory.class.getName());
 
-    private static Actions actions;
     private WebDriver driver;
-    private DesiredCapabilities capability = new DesiredCapabilities();
-    private static TestData run;
+    private final DesiredCapabilities capability = new DesiredCapabilities();
     public static Properties userProp;
     public static Properties staticDataProp;
 
     private DriverFactory() {
     }
 
-    private static DriverFactory instance = new DriverFactory();
+    private static final DriverFactory instance = new DriverFactory();
 
     public static DriverFactory getInstance() {
         return instance;
     }
 
-    private ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<WebDriver>() {
+    private final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<WebDriver>() {
         @Override
         protected WebDriver initialValue() {
             if (driver == null) {
@@ -118,16 +115,12 @@ public class DriverFactory {
                                 }
                                 capability.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                                 driver = new ChromeDriver(capability);
-                                driver.manage().window().maximize();
-                                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                                actions = new Actions(driver);
+                                setTimeout(60);
                                 break;
 
                             case FIREFOX:
                                 driver = new FirefoxDriver();
-                                driver.manage().window().maximize();
-                                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                                actions = new Actions(driver);
+                                setTimeout(60);
                                 break;
 
                         }
@@ -169,10 +162,15 @@ public class DriverFactory {
                 Runtime.getRuntime().addShutdownHook(
                         new Thread(new BrowserCleanup()));
             }
-            run = new TestData();
+            TestData run = new TestData();
             run.createNewRunNumber();
         }
     };
+
+    private void setTimeout(int timeoutLength) {
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(timeoutLength, TimeUnit.SECONDS);
+    }
 
     private class BrowserCleanup implements Runnable {
         public void run() {

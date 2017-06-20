@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public abstract class FileHandler {
+abstract class FileHandler {
 
     public static String fileReader(String fileName) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {

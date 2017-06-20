@@ -23,7 +23,7 @@ public class ContextHelper {
     public String getSearchTerm() {
 
         if (searchTerm == null) {
-            searchTerm = new String();
+            searchTerm = "";
         }
         return searchTerm;
     }

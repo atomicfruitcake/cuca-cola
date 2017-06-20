@@ -4,16 +4,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import pageObjects.Page;
+import pageObjects.PageObject;
 
-public class GoogleHomePage extends Page {
+import java.util.List;
+
+public class GoogleHomePage extends PageObject {
 
 	public GoogleHomePage() {
 		PageFactory.initElements(driver, this);
 	}
 
-	private String URL = "https://www.google.co.uk/";
-	
 	@FindBy(how = How.ID, using = "lst-ib")
 	private WebElement searchBar;
 	
@@ -22,6 +22,9 @@ public class GoogleHomePage extends Page {
 
 	@FindBy(how = How.ID, using = "btnI")
 	private WebElement imFeelingLuckyButton;
+
+	@FindBy(how = How.XPATH, using = "//*[@class=\"rc\"]")
+	private List<WebElement> searchResults;
 
 	public void enterTextInSearchBar(String searchTerm) {
 		searchBar.sendKeys(searchTerm);
@@ -35,7 +38,11 @@ public class GoogleHomePage extends Page {
 		imFeelingLuckyButton.click();
 	}
 
+	public List<WebElement> getSearchResultsList() {
+		return searchResults;
+	}
+
 	public String getURL() {
-		return URL;
+		return "https://www.google.co.uk/";
 	}
 }

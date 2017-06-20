@@ -10,9 +10,9 @@ import drivers.DriverFactory;
 
 public class TestData {
 
-    public static String RunNumberFilePath = "src/test/resources/RunNumber.properties";
+    private static final String RunNumberFilePath = "src/test/resources/RunNumber.properties";
 
-    public String getCurrentRunNumber() {
+    private String getCurrentRunNumber() {
         String count;
         try {
             if (!new File(RunNumberFilePath).exists())
@@ -38,7 +38,7 @@ public class TestData {
         System.out.println("******** THIS IS RUN NUMBER:  " + count + " ********");
     }
 
-    public void putNewRunNumber(String count) {
+    private void putNewRunNumber(String count) {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(new File(RunNumberFilePath)));
             bw.write(count);
